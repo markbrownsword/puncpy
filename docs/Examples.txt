@@ -1,0 +1,5 @@
+
+>>> tagger = Tagger('It\'s getting harder')
+>>> tagger.tag_text()
+
+[('It', 'PRP'), ("'s", 'VBZ'), ('getting', 'VBG'), ('harder', 'RBR')]

@@ -26,7 +26,7 @@ conda activate python35
 >>> nltk.download('punkt')
 >>> nltk.download('averaged_perceptron_tagger')
 
-Run PuncPy (in Python Console)
+# Run PuncPy (in Python Console)
 >>> from puncpy.tagger import Tagger
 >>> from puncpy.common import process_tagged_text
 >>> tagger = Tagger('This is my own invention')
@@ -37,7 +37,7 @@ Run PuncPy (in Python Console)
 python -m unittest discover -v
 
 # Create Requirements File
-conda list --export > requirements.txt 
+conda list --export > requirements.txt
 
 # Deactivate environment
 conda deactivate

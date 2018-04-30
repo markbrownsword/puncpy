@@ -28,7 +28,7 @@ nltk=3.2.5=py35h09ad193_0
 openssl=1.0.2o=h20670df_0
 patchelf=0.9=hf79760b_2
 pbr=4.0.2=py35_0
-pip=9.0.3=py35_0
+pip=10.0.1=py35_0
 pkginfo=1.4.2=py35_1
 psutil=5.4.5=py35h14c3975_0
 pycosat=0.6.3=py35h6b6bb97_0
