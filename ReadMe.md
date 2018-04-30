@@ -21,17 +21,17 @@ conda create --name python35 --file requirements.txt
 # Activate environment
 conda activate python35
 
-# Install (required one time only with pip option --editable used)
-./install.sh
+# Initial Setup for NLTK (in Python Console)
+>>> import nltk
+>>> nltk.download('punkt')
+>>> nltk.download('averaged_perceptron_tagger')
 
-# Run (in Python Console)
-```bash
+Run PuncPy (in Python Console)
 >>> from puncpy.tagger import Tagger
 >>> from puncpy.common import process_tagged_text
 >>> tagger = Tagger('This is my own invention')
 >>> result = tagger.tag_text()
 >>> process_tagged_text(result)
-```
 
 # Test
 python -m unittest discover -v
