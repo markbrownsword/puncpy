@@ -1,5 +1,12 @@
+>>> from puncpy.tagger import Tagger
+
 
 >>> tagger = Tagger('It\'s getting harder')
 >>> tagger.tag_text()
-
 [('It', 'PRP'), ("'s", 'VBZ'), ('getting', 'VBG'), ('harder', 'RBR')]
+
+
+
+>>> tagger = Tagger('Mr. Jones\' golf clubs')
+>>> tagger.tag_text()
+[('Mr.', 'NNP'), ('Jones', 'NNP'), ("'", 'POS'), ('golf', 'NN'), ('clubs', 'NNS')]

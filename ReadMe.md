@@ -32,6 +32,9 @@ conda activate python35
 >>> tagger = Tagger('This is my own invention')
 >>> result = tagger.tag_text()
 >>> process_tagged_text(result)
+[('This', 'DT'), ('is', 'VBZ'), ('my', 'PRP$'), ('own', 'JJ'), ('invention', 'NN')]
+
+>>> exit()
 
 # Test
 python -m unittest discover -v
