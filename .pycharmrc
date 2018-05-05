@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
-# PyCharm currently attempts to activate the conda environment, but cannot locate the 'activate' command.
-# An error is reported in the console. Unticking 'Activate virtualenv' on Tools/Terminal Settings prevents the error.
-
-# This script is a work around to activate the conda environment automatically.
+# This script activates the conda environment when the terminal is opened in PyCharm.
 # Update Tools/Terminal Settings Shell Path to: /bin/bash --rcfile .pycharmrc
 
 source ~/.bashrc
