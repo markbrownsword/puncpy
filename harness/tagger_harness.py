@@ -2,8 +2,9 @@ from puncpy.tagger import Tagger
 
 
 def run_tagger():
-    tagger = Tagger('It\'s getting harder')
-    tagged_text = tagger.tag_text()
+    stop_words = []
+    tagger = Tagger(stop_words)
+    tagged_text = tagger.tag_text('It\'s getting harder')
     return tagged_text
 
 

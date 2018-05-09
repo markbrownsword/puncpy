@@ -9,6 +9,8 @@ class Apostrophe:
         "Apostrophe_Rule_1": ("NNN", "POS")
     }
 
+    stop_words = []
+
     '''
     stop_words = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', 'your', 'yours', 'yourself',
     'yourselves', 'he', 'him', 'his', 'himself', 'she', 'her', 'hers', 'herself', 'it', 'its', 'itself', 'they',
@@ -25,18 +27,14 @@ class Apostrophe:
 
     def execute(self, sentence: str) -> ApostropheItemCollection:
         # Tokenize, Tag
-
-        # TODO: tagger = Tagger(stop_words)
-        # TODO: tagged_text = tagger.tag_text(sentence)
-
-        tagger = Tagger(sentence)
-        tagged_text = tagger.tag_text()
+        tagger = Tagger(self.stop_words)
+        tagged_text = tagger.tag_text(sentence)
 
         # Match tokens
+        # TODO: Add the token after apostrophe_token - so result is List of Tuple(3) [('NNS', 'POS', 'VRB')]
         apostrophe_pairs = self.__match_apostrophe_pairs(tagged_text)
 
-        # Build response
-
+        # TODO: Build response
         return [ApostropheItem("It's", "Apostrophe_Rule_1")]
 
     @staticmethod
