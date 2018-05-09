@@ -3,10 +3,9 @@ from puncpy.tagger import Tagger
 
 
 class Apostrophe:
-
     # Rules
     d1 = {
-        "Apostrophe_Rule_1": ("NNN", "POS")
+        "Apostrophe_Rule_1": ("PRP", "VBZ", "VBG")
     }
 
     stop_words = []
@@ -26,15 +25,28 @@ class Apostrophe:
     '''
 
     def execute(self, sentence: str) -> ApostropheItemCollection:
-        # Tokenize, Tag
+        # Tag
         tagger = Tagger(self.stop_words)
         tagged_text = tagger.tag_text(sentence)
 
-        # Match tokens
-        # TODO: Add the token after apostrophe_token - so result is List of Tuple(3) [('NNS', 'POS', 'VRB')]
+        # Match
         apostrophe_pairs = self.__match_apostrophe_pairs(tagged_text)
+        if not apostrophe_pairs:
+            raise ValueError('No apostrophes in text.')
 
-        # TODO: Build response
+        # Validate
+        for (item1, item2, item3) in apostrophe_pairs:
+            # TODO - add item to ApostropheItem
+            item1_pos1 = item1[1] # TODO: Use Ternary to guard against None
+            item2_pos2 = item2[1] # TODO: Use Ternary to guard against None
+            item3_pos3 = item3[1] # TODO: Use Ternary to guard against None
+            for key, (pos1, pos2, pos3) in self.d1.items():
+                if item1_pos1 == pos1 and item2_pos2 == pos2 and item3_pos3 == pos3:
+                    # TODO - add matched rule to ApostropheItem
+                    print("????")
+
+            # TODO - add ApostropheItem to ApostropheItemCollection
+
         return [ApostropheItem("It's", "Apostrophe_Rule_1")]
 
     @staticmethod
@@ -46,14 +58,22 @@ class Apostrophe:
             if current_token[0] != apostrophe_token:
                 continue
 
+            current = current_token
+            previous = None
+            after = None
+
+            # Find token before apostrophe_token
             for previous_index, previous_token in enumerate(tagged_text):
                 if previous_index == current_index - 1:
-                    apostrophe_pairs.append([previous_token, current_token])
+                    previous = previous_token
                     break
 
-        if len(apostrophe_pairs) == 0:
-            raise ValueError('No apostrophes in text.')
-        else:
-            print(apostrophe_pairs)
+            # Find token after apostrophe_token
+            for after_index, after_token in enumerate(tagged_text):
+                if after_index == current_index + 1:
+                    after = after_token
+                    break
+
+            apostrophe_pairs.append([previous, current, after])
 
         return apostrophe_pairs
